@@ -1,7 +1,7 @@
 #anti spam/cooldown
 import discord
 import random
-
+global test  = 0
 def nosharp(str1):
     return str1.split("#")[0]
 
@@ -21,7 +21,7 @@ def message_function(m):
     ret_value = []
     print(m.content)
     if "j'ai faim" in(m.content.lower()):
-        print("42")
+        test+=1
         ret_value.append("T'as perdu : " +name(m.author))
     if "bonjour" in(m.content.lower()):
         ret_value.append("Bonjour : " +name(m.author))
