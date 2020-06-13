@@ -21,8 +21,8 @@ def message_function(m):
     ret_value = []
     print(m.content)
     if "j'ai faim" in(m.content.lower()):
-        test+=1
-        ret_value.append("T'as perdu : " +name(m.author)+ str(test)
+        test += 1
+        ret_value.append("T'as perdu : " +name(m.author)+ str(test))
     if "bonjour" in(m.content.lower()):
         ret_value.append("Bonjour : " +name(m.author))
 
