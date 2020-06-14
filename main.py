@@ -17,12 +17,12 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    tab = message_function(message)
-    print(tab)
-    if (len(tab)>0):
-        for m in tab:
-            print(m)
-            await message.channel.send(m)
+    tab = await message_function(message)
+    # print(tab)
+    # if (len(tab)>0):
+    #     for m in tab:
+    #         print(m)
+    #         await message.channel.send(m)
 
 
 
