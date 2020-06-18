@@ -29,14 +29,30 @@ async def message_function(m):
         await m.channel.send("T'as perdu : " +name(m.author))
 
     if "bonjour" in(m.content.lower()):
-        await m.channel.send("Bonjour  " +name(m.author))
-
+        await m.channel.send("Bonjour " +name(m.author))
+    if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
+        await m.channel.send("Nenuit " +name(m.author))
+        
     if "$victim" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
             for k in m.mentions:
                 await k.move_to(m.author.guild.get_channel(369161932730662922))
         else:
             await m.channel.send(name(m.author)+" tu n'as pas la permission")
+    if "$kick" in (m.content.lower()):
+        if has_permission(m.author,"move_members"):
+            for k in m.mentions:
+                await k.move_to()
+        else:
+            await m.channel.send(name(m.author)+" tu n'as pas la permission")
+    # if "$mute" in (m.content.lower()):
+    #     if has_permission(m.author,"move_members"):
+    #         for k in m.mentions:
+    #             await k.move_to()
+    #     else:
+    #         await m.channel.send(name(m.author)+" tu n'as pas la permission")
+
+
     if "$dé" in(m.content):
 
         k=(m.content.split("$dé")[-1]).split("$")[0]
