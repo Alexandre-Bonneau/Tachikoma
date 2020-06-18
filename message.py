@@ -6,18 +6,18 @@ def nosharp(str1):
     return str1.split("#")[0]
 
 def name(author):
-    if(type(author) is discord.user.User):
-        return nosharp(str(author))
-    if(type(author) is discord.member.Member):
+
+    if(type(author) is discord.member.Member and author.nick != None):
         return author.nick
-    return "noname"
+    return nosharp(str(author))
 
 def has_permission(member,permission):
+
     for role in member.roles:
+        print(role.permissions.__getattribute__(permission))
         if role.permissions.__getattribute__(permission):
             return True
     return False
-
 
 def query(author):
     return
@@ -29,11 +29,15 @@ async def message_function(m):
         await m.channel.send("T'as perdu : " +name(m.author))
 
     if "bonjour" in(m.content.lower()):
+        print(m.author.roles)
         await m.channel.send("Bonjour : " +name(m.author))
-    
-    if "$victim" in (m.content.lower()) and has_permission(m.author,"move_members"):
-        for k in m.mentions:
-            await k.move_to(m.author.guild.get_channel(369161932730662922))
+
+    if "$victim" in (m.content.lower()):
+        if has_permission(m.author,"move_members"):
+            for k in m.mentions:
+                await k.move_to(m.author.guild.get_channel(369161932730662922))
+        else:
+            await m.channel.send(name(m.author)+" tu n'as pas la permission")
     if "$dé" in(m.content):
 
         k=(m.content.split("$dé")[-1]).split("$")[0]
