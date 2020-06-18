@@ -30,7 +30,7 @@ async def message_function(m):
 
     if "bonjour" in(m.content.lower()):
         print(m.author.roles)
-        await m.channel.send("Bonjour : " +name(m.author))
+        a#wait m.channel.send("Bonjour : " +name(m.author))
 
     if "$victim" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
