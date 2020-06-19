@@ -32,7 +32,7 @@ async def message_function(m):
         await m.channel.send("Bonjour " +name(m.author))
     if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
         x = random.randint(0,2)
-        await m.channel.send(["Nenuit","Bonne nuit", "See you space cowboy" ][x]+ (name(m.author)) * (x<2))
+        await m.channel.send(["Nenuit ","Bonne nuit ", "See you space cowboy" ][x]+ (name(m.author)) * (x<2))
 
     if "$victim" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
