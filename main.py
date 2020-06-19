@@ -3,7 +3,7 @@ import asyncio
 import random
 from bot_token import TOKEN
 from message import *
-random.seed()
+
 
 
 

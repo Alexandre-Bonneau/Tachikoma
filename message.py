@@ -1,7 +1,7 @@
 #anti spam/cooldown
 import discord
 import random
-
+random.seed()
 def nosharp(str1):
     return str1.split("#")[0]
 
@@ -31,8 +31,9 @@ async def message_function(m):
     if "bonjour" in(m.content.lower()):
         await m.channel.send("Bonjour " +name(m.author))
     if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
-        await m.channel.send("Nenuit " +name(m.author))
-        
+        x = random.randint(0,2)
+        await m.channel.send(["Nenuit","Bonne nuit", "See you space cowboy" ][x]+ (name(m.author)) * (x<2))
+
     if "$victim" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
             for k in m.mentions:
