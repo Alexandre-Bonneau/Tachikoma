@@ -57,7 +57,7 @@ async def message_function(m):
     if "$dé" in(m.content):
 
         k=(m.content.split("$dé")[-1]).split("$")[0]
-        int(k)
+        
         rd = -1
         try:
             value = int(k)
