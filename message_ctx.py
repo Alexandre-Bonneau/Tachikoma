@@ -4,7 +4,7 @@ import random
 random.seed()
 from discord.ext import commands
 
-
+@bot.command()
 async def test(ctx, arg):
     await ctx.send(arg)
 
