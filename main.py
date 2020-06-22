@@ -12,7 +12,7 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    await client.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name="Debugging"))
+    await client.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name="Trying its best"))
 
 
 
