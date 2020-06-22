@@ -3,15 +3,25 @@ import asyncio
 import random
 from bot_token import TOKEN
 from message import *
-
+from discord.ext import commands
 
 
 
 client = discord.Client()
+bot = commands.Bot(command_prefix='$')
+
+
 
 @client.event
+activity = discord.Game(name="Debugging")
+await client.change_presence(status=discord.Status.idle, activity=activity)
+
+
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
+
+@bot.command()
+test()
 
 @client.event
 async def on_message(message):
