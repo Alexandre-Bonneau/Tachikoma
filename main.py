@@ -3,6 +3,7 @@ import asyncio
 import random
 from bot_token import TOKEN
 from message import *
+from message_ctx import *
 from discord.ext import commands
 
 
