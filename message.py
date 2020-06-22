@@ -28,7 +28,7 @@ async def message_function(m):
     if "j'ai faim" in(m.content.lower()):
         await m.channel.send("T'as perdu : " +name(m.author))
 
-    if "bonjour" in(m.content.lower()):
+    if "bonjour" in(m.content.lower() ) or "jour" == m.content.lower():
         await m.channel.send("Bonjour " +name(m.author))
     if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
         x = random.randint(0,2)
