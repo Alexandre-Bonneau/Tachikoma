@@ -1,7 +1,7 @@
 #anti spam/cooldown
 import discord
 import random
-
+random.seed()
 def nosharp(str1):
     return str1.split("#")[0]
 
@@ -19,20 +19,25 @@ def has_permission(member,permission):
             return True
     return False
 
+
+
+
+
+
 def query(author):
     return
 
 async def message_function(m):
 
     ret_value = []
-    if "bonjour" in(m.content.lower()):
-        await m.channel.send("Bonjour  " +name(m.author))
-
-        
     if "j'ai faim" in(m.content.lower()):
         await m.channel.send("T'as perdu : " +name(m.author))
 
-
+    if "bonjour" in(m.content.lower() ) or "jour" == m.content.lower():
+        await m.channel.send("Bonjour " +name(m.author))
+    if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
+        x = random.randint(0,2)
+        await m.channel.send(["Nenuit ","Bonne nuit ", "See you space cowboy" ][x]+ (name(m.author)) * (x<2))
 
     if "$victim" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
@@ -40,10 +45,23 @@ async def message_function(m):
                 await k.move_to(m.author.guild.get_channel(369161932730662922))
         else:
             await m.channel.send(name(m.author)+" tu n'as pas la permission")
+    if "$kick" in (m.content.lower()):
+        if has_permission(m.author,"move_members"):
+            for k in m.content.split("$kick")[-1]:
+                await (m.guild.get_member_named(k)).move_to()
+        else:
+            await m.channel.send(name(m.author)+" tu n'as pas la permission")
+    # if "$mute" in (m.content.lower()):
+    #     if has_permission(m.author,"mute_members"):
+    #         for k in m.mentions:
+    #             await k.move_to()
+    #     else:
+    #         await m.channel.send(name(m.author)+" tu n'as pas la permission")
+
+
     if "$dé" in(m.content):
 
         k=(m.content.split("$dé")[-1]).split("$")[0]
-        int(k)
         rd = -1
         try:
             value = int(k)
