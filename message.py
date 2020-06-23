@@ -1,6 +1,7 @@
 #anti spam/cooldown
 import discord
 import random
+import playlists as p
 random.seed()
 def nosharp(str1):
     return str1.split("#")[0]
@@ -18,7 +19,6 @@ def has_permission(member,permission):
         if role.permissions.__getattribute__(permission):
             return True
     return False
-
 
 
 
@@ -68,6 +68,16 @@ async def message_function(m):
     #         await m.channel.send(name(m.author)+" tu n'as pas la permission")
 
 
+
+    if "$p" in (m.content):
+        end = m.content.split("$p")
+        if "-play" in end:
+            pname = end.split("-play")
+            pl=p.playlist()
+            pid = pl.get_playlist(pname)
+            pl.get_song_addr(pid)
+            for k in pl:
+                await m.channel.send("-q "+k)
     if "$dé" in(m.content):
 
         k=(m.content.split("$dé")[-1]).split("$")[0]
