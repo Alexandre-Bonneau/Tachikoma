@@ -25,11 +25,14 @@ def query(author):
 async def message_function(m):
 
     ret_value = []
+    if "bonjour" in(m.content.lower()):
+        await m.channel.send("Bonjour  " +name(m.author))
+
+        
     if "j'ai faim" in(m.content.lower()):
         await m.channel.send("T'as perdu : " +name(m.author))
 
-    if "bonjour" in(m.content.lower()):
-        await m.channel.send("Bonjour  " +name(m.author))
+
 
     if "$victim" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
