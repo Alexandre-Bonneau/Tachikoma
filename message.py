@@ -47,8 +47,17 @@ async def message_function(m):
             await m.channel.send(name(m.author)+" tu n'as pas la permission")
     if "$kick" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
-            for k in m.content.split("$kick")[-1]:
-                await (m.guild.get_member_named(k)).move_to()
+            for k in m.content.split("$kick")[-1].split(" "):
+                print("p^pppp")
+                print(k)
+                print("ppppp")
+                member = m.guild.get_member_named(k)
+                print("mmmmmmm")
+                print(member)
+                print("mmmmm")
+                 
+                if member:
+                    await member.move_to(m.author.guild.get_channel(369161932730662922))
         else:
             await m.channel.send(name(m.author)+" tu n'as pas la permission")
     # if "$mute" in (m.content.lower()):
