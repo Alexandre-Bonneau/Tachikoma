@@ -46,7 +46,7 @@ class playlist(object):
         else:
             return "There is already such playlist"
 
-a = playlist()
-a.add_playlist("test3")
-a.add_song("test3","test","eeokeko")
-print(a.get_playlist("test1").attrib)
+#a = playlist()
+#a.add_playlist("test3")
+#a.add_song("test3","test","eeokeko")
+#"print(a.get_playlist("test1").attrib)

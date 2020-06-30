@@ -47,7 +47,7 @@ async def message_function(m):
             await m.channel.send(name(m.author)+" tu n'as pas la permission")
     if "$kick" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
-            for k in m.content.split("$kick")[-1].split(" "):
+            for k in m.content.split("$kick")[-1].split(" ")[-1]:
                 print("p^pppp")
                 print(k)
                 print("ppppp")
@@ -70,13 +70,18 @@ async def message_function(m):
 
 
     if "$p" in (m.content):
-        end = m.content.split("$p")
+        print("p")
+        end = m.content.split("$p")[-1]
         if "-play" in end:
-            pname = end.split("-play")
+            print("-p")
+            print(end)
+            pname = end.split("-play")[-1].split(' ')[-1]
+            print(pname)
             pl=p.playlist()
             pid = pl.get_playlist(pname)
-            pl.get_song_addr(pid)
-            for k in pl:
+            print(pid)
+            plist = pl.get_song_addr(pid)
+            for k in plist:
                 await m.channel.send("-q "+k)
     if "$dé" in(m.content):
 
