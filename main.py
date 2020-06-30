@@ -14,7 +14,9 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     activity_ = discord.Activity(type = discord.ActivityType.playing, name="Trying its best")
     await client.change_presence(status=discord.Status.online, activity=activity_)
-
+    from musicbot.player import MusicBot
+    m = MusicBot()
+    m.run()
 
 
 @client.event
