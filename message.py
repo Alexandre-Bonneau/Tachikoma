@@ -112,6 +112,7 @@ async def message_function(m):
     if "$roll" in (m.content):
         stat=(m.content.split(" ")[-1])
         id = m.author.id
-        dic = dod()
+        dic = jdr.dod()
         rd =  random.randint(1,dic[id][stat])
+        await m.channel.send( str(rd))
     return 0
