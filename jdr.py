@@ -1,8 +1,8 @@
-def new_dic(for,dex,con,int,vol,cha):
+def new_dic(str,dex,con,intel,vol,cha):
     dic = {}
-    dic["for"]=for
+    dic["for"]=str
     dic["con"]=con
-    dic["int"]=ibt
+    dic["int"]=intel
     dic["vol"]=vol
     dic["cha"]=cha
     dic["dex"]=dex
