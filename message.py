@@ -35,7 +35,9 @@ async def message_function(m):
         await m.channel.send("T'as perdu : " +name(m.author))
 
     if "bonjour" in(m.content.lower() ) or "jour" == m.content.lower():
-        await m.channel.send("Bonjour " +name(m.author) )
+
+        await m.channel.send("Bonjour " +name(m.author) + str(m.author.id))
+
     if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
         x = random.randint(0,2)
         await m.channel.send(["Nenuit ","Bonne nuit ", "See you space cowboy" ][x]+ (name(m.author)) * (x<2))
@@ -56,7 +58,7 @@ async def message_function(m):
                 print("mmmmmmm")
                 print(member)
                 print("mmmmm")
-                 
+
                 if member:
                     await member.move_to(m.author.guild.get_channel(369161932730662922))
         else:
