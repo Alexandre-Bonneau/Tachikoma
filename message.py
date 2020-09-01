@@ -1,7 +1,7 @@
 #anti spam/cooldown
 import discord
 import random
-import playlists as p
+#import playlists as p
 random.seed()
 def nosharp(str1):
     return str1.split("#")[0]
