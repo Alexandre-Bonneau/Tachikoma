@@ -94,7 +94,7 @@ async def message_function(m):
             if value<=0:
                     await m.channel.send("Les dés sont des entiers positifs")
             else:
-                rd = random.randint(0,value-1)
+                rd = random.randint(1,value)
                 if((rd ==0 or rd ==9) and value ==10):
                     rd2 = random.randint(0,value-1)
                     rd = 10*rd+rd2
