@@ -2,6 +2,7 @@
 #anti spam/cooldown
 import discord
 import random
+import jdr
 #import playlists as p
 random.seed()
 def nosharp(str1):
@@ -108,5 +109,9 @@ async def message_function(m):
                 await m.channel.send( rd)
         except:
             await m.channel.send( "Les dés sont des entiers positifs")
-
+    if "$roll" in (m.content):
+        stat=(m.content.split(" ")[-1])
+        id = m.author.id
+        dic = dod()
+        rd =  random.randint(1,dic[id][stat])
     return 0
