@@ -3,30 +3,22 @@
 
         <stat for="4" dex="8" con="6" int="10" vol="4" cha="10" />
     </fdp>
-</data>
 
-<data>
     <fdp idlist="[182932585477963777]" name="julien" pname = "pantherophis">
 
         <stat for="6" dex="10" con="8" int="10" vol="6" cha="4" />
     </fdp>
-</data>
 
-<data>
     <fdp idlist="[203621493773434890]" name="leyla" pname = "eilyn">
 
         <stat for="10" dex="10" con="8" int="6" vol="6" cha="4" />
     </fdp>
-</data>
 
-<data>
     <fdp idlist="[244204902316769281]" name="paulin" pname = "altus">
 
         <stat for="8" dex="10" con="6" int="8" vol="8" cha="4" />
     </fdp>
-</data>
 
-<data>
     <fdp idlist="[42]" name="pf" pname = "harry">
 
         <stat for="4" dex="8" con="4" int="12" vol="4" cha="10" />
