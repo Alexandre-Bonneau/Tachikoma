@@ -39,7 +39,7 @@ async def message_function(m):
     if "bonjour" in(m.content.lower() ) or "jour" == m.content.lower():
 
         await m.channel.send("Bonjour " +name(m.author) )
-    if "$ID" in(m.content.lower() ):
+    if "$id" in(m.content.lower() ):
 
         await m.channel.send("L'id de " +name(m.author) +" est: "+ str(m.author.id) )
 
