@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+
 import random
 # def new_dic(str,dex,con,intel,vol,cha):
 #     dic = {}

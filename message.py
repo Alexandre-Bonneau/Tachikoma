@@ -116,7 +116,7 @@ async def message_function(m):
         except:
             await m.channel.send( "Les dés sont des entiers positifs")
     if "$roll" in (m.content):
-        message=(m.content.split(" ")[-1])
+        message=(m.content.split("$roll")[-1])
         id = m.author.id
         value = jDR_Data.roll(message,id)
         for i in value:
