@@ -5,6 +5,7 @@ import random
 import jdr
 #import playlists as p
 random.seed()
+jDR_Data = data_stat()
 def nosharp(str1):
     return str1.split("#")[0]
 
@@ -37,7 +38,12 @@ async def message_function(m):
 
     if "bonjour" in(m.content.lower() ) or "jour" == m.content.lower():
 
-        await m.channel.send("Bonjour " +name(m.author) + str(m.author.id))
+        await m.channel.send("Bonjour " +name(m.author) )
+    if "$ID" in(m.content.lower() ):
+
+        await m.channel.send("L'id de " +name(m.author) +" est: "+ str(m.author.id) )
+
+
 
     if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
         x = random.randint(0,2)
@@ -110,9 +116,9 @@ async def message_function(m):
         except:
             await m.channel.send( "Les dés sont des entiers positifs")
     if "$roll" in (m.content):
-        stat=(m.content.split(" ")[-1])
+        message=(m.content.split(" ")[-1])
         id = m.author.id
-        dic = jdr.dod()
-        rd =  random.randint(1,dic[id][stat])
-        await m.channel.send( str(rd))
+        value = jDR_Data.roll(message,id)
+        for i in value:
+            await m.channel.send(i)
     return 0
