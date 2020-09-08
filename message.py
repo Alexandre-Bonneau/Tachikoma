@@ -2,7 +2,7 @@
 #anti spam/cooldown
 import discord
 import random
-import jdr
+from jdr import *
 #import playlists as p
 random.seed()
 jDR_Data = data_stat()

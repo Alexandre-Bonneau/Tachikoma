@@ -69,11 +69,11 @@ class data_stat(object):
             rd =random.randint(1,eval(val))
             ret.append(str(rd))
         return ret
-# 
+#
 # a=data_stat()
 # b=a.roll("for int","42")
 # print(b)
-
+jDR_Data = data_stat()
 
     #
     # def get_song_name(self,playlist):
