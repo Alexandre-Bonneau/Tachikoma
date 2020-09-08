@@ -73,7 +73,7 @@ class data_stat(object):
 # a=data_stat()
 # b=a.roll("for int","42")
 # print(b)
-jDR_Data = data_stat()
+
 
     #
     # def get_song_name(self,playlist):
