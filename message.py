@@ -3,9 +3,11 @@
 import discord
 import random
 from jdr import *
+from attest import *
 #import playlists as p
 random.seed()
 jDR_Data = data_stat()
+attest_class = attest()
 def nosharp(str1):
     return str1.split("#")[0]
 
@@ -48,6 +50,8 @@ async def message_function(m):
     if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
         x = random.randint(0,2)
         await m.channel.send(["Nenuit ","Bonne nuit ", "See you space cowboy" ][x]+ (name(m.author)) * (x<2))
+
+
 
     if "$victim" in (m.content.lower()):
         if has_permission(m.author,"move_members"):
@@ -121,4 +125,15 @@ async def message_function(m):
         value = jDR_Data.roll(message,id)
         for i in value:
             await m.channel.send(i)
+    if "$attest" in (m.content):
+        id = m.author.id
+        value = attest_class.send(id)
+        if m.author.dm_channel == None:
+            await m.author.create_dm()
+        file = discord.File(value, filename="attestation.pdf")
+        # embed = discord.Embed()
+        # embed.set_image(url="attachment://image.pdf")
+        await m.author.dm_channel.send(file=file)
+        await m.channel.send("attestation générée et envoyée en MP")
+
     return 0
