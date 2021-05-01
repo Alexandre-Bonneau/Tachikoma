@@ -19,7 +19,7 @@ class attest(object):
         self.tree = ET.parse(xml)
         self.root = self.tree.getroot()
         self.people_list = self.root.findall('people')
-        self.downloadPath = "/home/abonneau/Private/test"
+        self.downloadPath = "/home/alexbasicc/discord_bot/Tachikoma/dl"
 
     def get_people(self,str):
         for i in self.people_list:
@@ -68,9 +68,10 @@ class attest(object):
         form = driver.find_element_by_id("generate-btn")
         form.click()
         while len(os.listdir(downloadPath))==0:
-            None
+            print("waiting")
         link = (glob.glob(self.downloadPath+"/*")[0])
         while (link[-4:])!=".pdf":
+            print("dling")
             link = (glob.glob(self.downloadPath+"/*")[0])
             
     def send(self,id):
