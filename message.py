@@ -119,6 +119,54 @@ async def message_function(m):
                 await m.channel.send( rd)
         except:
             await m.channel.send( "Les dés sont des entiers positifs")
+    if "$md" in(m.content):
+
+        #nb = eval((m.content.split("$md")[-1]))
+        dicecollist = (m.content.split("$md")[1]).split(' ')
+        dicelist =[]
+        nmdice = 1
+        for i in dicecollist:
+            if len(i)>0:
+                dicelist.append(i)
+        for i in dicelist:
+            for j in eval(i[0]):
+                rd = random.randint(1,6)
+                await m.channel.send("Dé n°"+str(nmdice) +" : "+i[1])
+                if i[1]=="J":
+                    if  rd<=4:
+                        await m.channel.send(":crossed_swords:")
+                    if rd==5:
+                        await m.channel.send(":crossed_swords: :crossed_swords: :boom:")
+                    if rd==6:
+                        await m.channel.send(":o:")
+                if i[1]=="R":
+                    if rd<=2:
+                        await m.channel.send(":crossed_swords:")
+                    if rd>2 and rd<=4:
+                        await m.channel.send(":crossed_swords: :crossed_swords: :boom:")
+                    if rd ==5:
+                        await m.channel.send(":crossed_swords: :crossed_swords: :crossed_swords: :diamond_shape_with_a_dot_inside:")
+                    if rd ==6:
+                        await m.channel.send(":o:")
+                if i[1]=="B":
+                    if rd<=3:
+                        await m.channel.send(":shield:")
+                    if rd==4:
+                        await m.channel.send(":shield: :shield: :boom:")
+                    if rd >=5:
+                        await m.channel.send(":o:")
+
+                if i[1]=="G":
+                    if rd<=2:
+                        await m.channel.send(":shield: :shield: :boom:")
+                    if rd==3:
+                        await m.channel.send(":shield:")
+                    if rd==4:
+                        await m.channel.send(":shield: :shield:  :shield: :diamond_shape_with_a_dot_inside:")
+                    if rd >=5:
+                        await m.channel.send(":o:")
+
+                nmdice+=1
     if "$roll" in (m.content):
         message=(m.content.split("$roll")[-1])
         id = m.author.id
