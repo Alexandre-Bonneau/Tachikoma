@@ -1,26 +1,26 @@
 <data>
     <fdp idlist="[227088616575205376,482938921416654849]" name="alex" pname = "jack">
 
-        <stat for="4" dex="8" con="6" int="10" vol="6" cha="10" />
+        <stat for="4" dex="8" con="8" int="10" vol="6" cha="10" />
     </fdp>
 
     <fdp idlist="[182932585477963777]" name="julien" pname = "pantherophis">
 
-        <stat for="6" dex="10" con="8" int="10" vol="6" cha="4" />
+        <stat for="6" dex="10" con="8" int="10" vol="8" cha="4" />
     </fdp>
 
     <fdp idlist="[203621493773434890]" name="leyla" pname = "eilyn">
 
-        <stat for="10" dex="10" con="8" int="6" vol="6" cha="4" />
+        <stat for="10" dex="10" con="8" int="6" vol="6" cha="6" />
     </fdp>
 
     <fdp idlist="[244204902316769281]" name="paulin" pname = "altus">
 
-        <stat for="8" dex="10" con="6" int="8" vol="8" cha="4" />
+        <stat for="10" dex="10" con="6" int="8" vol="8" cha="4" />
     </fdp>
 
     <fdp idlist="[214756885587427328]" name="pf" pname = "harry">
 
-        <stat for="4" dex="8" con="4" int="12" vol="4" cha="10" />
+        <stat for="4" dex="8" con="6" int="12" vol="4" cha="10" />
     </fdp>
 </data>
