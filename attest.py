@@ -73,7 +73,7 @@ class attest(object):
         while (link[-4:])!=".pdf":
             print("dling")
             link = (glob.glob(self.downloadPath+"/*")[0])
-            
+
     def send(self,id):
         pp = self.get_people(str(id))
         files = glob.glob(self.downloadPath+"/*")
