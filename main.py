@@ -5,9 +5,10 @@ from bot_token import TOKEN
 from message import *
 
 
+intents = discord.Intents.default()  # Allow the use of custom intents
+intents.members = True
 
-
-client = discord.Client()
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():

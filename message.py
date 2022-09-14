@@ -3,11 +3,12 @@
 import discord
 import random
 from jdr import *
-from attest import *
+import os
+#from attest import *
 #import playlists as p
 random.seed()
 jDR_Data = data_stat()
-attest_class = attest()
+#attest_class = attest()
 def nosharp(str1):
     return str1.split("#")[0]
 
@@ -26,14 +27,13 @@ def has_permission(member,permission):
     return False
 
 
-
-
-
 def query(author):
     return
 
 async def message_function(m):
 
+    if (m.author == 880383298512228373):
+        return
     ret_value = []
     if "j'ai faim" in(m.content.lower()):
         await m.channel.send("T'as perdu : " +name(m.author))
@@ -44,7 +44,7 @@ async def message_function(m):
     if "$id" in(m.content.lower() ):
 
         await m.channel.send("L'id de " +name(m.author) +" est: "+ str(m.author.id) )
-
+        #await m.channel.send(str(m.author in m.guild.get_role(643923862714712097).members))
 
 
     if "bonne nuit" in(m.content.lower()) or "nenuit" in(m.content.lower()):
@@ -108,14 +108,16 @@ async def message_function(m):
                     await m.channel.send("Les dés sont des entiers positifs")
             else:
                 rd = random.randint(1,value)
-                if((rd ==0 or rd ==9) and value ==10):
-                    rd2 = random.randint(0,value-1)
-                    rd = 10*rd+rd2
-                    if(rd>=95):
-                        await m.channel.send("Oh le critique de " + name(m.author))
-                    if(rd<5):
-                        await m.channel.send( "Cheh, critique de " + name(m.author))
-                        rd = "0"+str(rd)
+                if value == 10 :
+                    rd -=1
+                    if((rd ==0 or rd ==9) and value ==10):
+                        rd2 = random.randint(0,value-1)
+                        rd = 10*rd+rd2
+                        if(rd>=95):
+                            await m.channel.send("Oh le critique de " + name(m.author))
+                        if(rd<5):
+                            await m.channel.send( "Cheh, critique de " + name(m.author))
+                            rd = "0"+str(rd)
                 await m.channel.send( rd)
         except:
             await m.channel.send( "Les dés sont des entiers positifs")
@@ -173,15 +175,23 @@ async def message_function(m):
         value = jDR_Data.roll(message,id)
         for i in value:
             await m.channel.send(i)
-    if "$attest" in (m.content):
-        id = m.author.id
-        value = attest_class.send(id)
-        if m.author.dm_channel == None:
-            await m.author.create_dm()
-        file = discord.File(value, filename="attestation.pdf")
-        # embed = discord.Embed()
-        # embed.set_image(url="attachment://image.pdf")
-        await m.author.dm_channel.send(file=file)
-        await m.channel.send("attestation générée et envoyée en MP")
+    if "$reboot" in (m.content):
+        id=m.author.id
+        if  m.channel.send(str(m.author in m.guild.get_role(643923862714712097).members)):
+            os.system("reboot")
+
+    if "ping" in (m.content) and m.author.id != 203619925179236352:
+        await m.channel.send("pong")
+ #   if "$attest" in (m.content):
+ #       id = m.author.id
+ #       value = attest_class.send(id)
+ #       if m.author.dm_channel == None:
+ #           await m.author.create_dm()
+ #       file = discord.File(value, filename="attestation.pdf")
+ #       # embed = discord.Embed()
+ #       # embed.set_image(url="attachment://image.pdf")
+ #       await m.author.dm_channel.send(file=file)
+ #       await m.channel.send("attestation générée et envoyée en MP")
 
     return 0
+
