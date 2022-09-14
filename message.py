@@ -194,4 +194,3 @@ async def message_function(m):
  #       await m.channel.send("attestation générée et envoyée en MP")
 
     return 0
-
