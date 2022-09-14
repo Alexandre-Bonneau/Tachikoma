@@ -4,9 +4,7 @@
         <info prenom="Alexandre" nom="Bonneau" addr="234 avenue st exupery" dnaiss="27/04/1995" lnaiss = "Poitiers" cp="31400" ville="Toulouse" />
     </people>
 
-    <people idlist="[182932585477963777]">
-        <info prenom="julien" nom="vidalie" addr="chateau de versaille" dnaiss="14/12/1995" lnaiss = "Bretagne?" cp="78" ville="versaille" />
-    </people>
+
 <!--
     <fdp idlist="[182932585477963777]" name="julien" pname = "pantherophis">
 
