@@ -33,7 +33,7 @@ def call_together_ai(prompt):
         stream=False  # Set to False for single response
     )
     rett=response.choices[0].message.content
-    print(retet)
+    print(rett)
     
     return rett
 
