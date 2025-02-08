@@ -35,7 +35,7 @@ async def message_function(m, call_together_ai):
         "ping": "pong"
     }
 
-    if content_lower in responses and m.author.id != 203619925179236352:
+    if content_lower in responses:# and m.author.id != 203619925179236352:
         return responses[content_lower]
 
     # Display user ID
