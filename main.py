@@ -38,7 +38,7 @@ def call_together_ai(prompt):
 async def on_message(message):
     if message.author == client.user:
         return
-    tab = await message_function(message)
+    tab = await message_function(message,call_together_ai)
 
 
 
