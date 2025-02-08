@@ -46,6 +46,7 @@ async def on_message(message):
     print(tab)
     if tab:
         print("here")
+        print(dir(tab))
         
         await message.channel.send("rrr")
         await message.channel.send(tab)
