@@ -20,6 +20,7 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=activity_)
 
 def call_together_ai(prompt):
+    print(prompt)
     response = client_ai.chat.completions.create(
         model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
         messages=[{"role": "user", "content": prompt}],
@@ -31,8 +32,10 @@ def call_together_ai(prompt):
         stop=["<|end_of_sentence|>"],
         stream=False  # Set to False for single response
     )
+    rett=response.choices[0].message.content
+    print(retet)
     
-    return response.choices[0].message.content
+    return rett
 
 @client.event
 async def on_message(message):
