@@ -22,7 +22,7 @@ async def on_ready():
 def call_together_ai(prompt):
     """ Calls TogetherAI and returns a valid response or error message """
     response = client_ai.chat.completions.create(
-        model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
+        model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
         messages=[{"role": "user", "content": prompt}],
         max_tokens=200,
         temperature=0.7,
