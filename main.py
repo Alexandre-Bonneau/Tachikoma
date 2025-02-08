@@ -22,6 +22,7 @@ def call_together_ai(prompt):
     """ Calls TogetherAI and returns a valid response or error message """
     response = client_ai.chat.completions.create(
         model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",  # Now using Mistral
+        {"role": "system", "content": "You are an advanced AI Discord Bot Called Tachikoma. Answer concisely and accurately."}
         messages=[{"role": "user", "content": prompt}],
         max_tokens=100,
         temperature=0.5,
