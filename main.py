@@ -18,23 +18,27 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     activity_ = discord.Activity(type = discord.ActivityType.playing, name="Trying its best")
     await client.change_presence(status=discord.Status.online, activity=activity_)
-
 def call_together_ai(prompt):
     """ Calls TogetherAI and returns a valid response or error message """
     response = client_ai.chat.completions.create(
-        model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
+        model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",  # Now using Mistral
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=200,
-        temperature=0.7,
-        top_p=0.7,
-        top_k=50,
-        repetition_penalty=1,
+        max_tokens=100,
+        temperature=0.5,
+        top_p=0.9,
         stop=["<|end_of_sentence|>"],
         stream=False
     )
 
-    # Debugging: Print full response for inspection
-    print("Raw API Response:", response)
+    response_dict = response.model_dump()  # Convert response to dictionary
+
+    # Extract AI response
+    if "choices" in response_dict and len(response_dict["choices"]) > 0:
+        return response_dict["choices"][0]["message"]["content"].strip()
+    else:
+        return "🤖 AI did not return a valid response."
+
+
 
     # Ensure response has the correct structure
     if "choices" in response and len(response["choices"]) > 0:
