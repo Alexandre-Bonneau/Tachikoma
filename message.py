@@ -14,7 +14,7 @@ def has_permission(member, permission):
 async def message_function(m, call_together_ai):
     """ Handles messages, including AI and custom commands. """
 
-    content_lower = m.content.lower()  # Use 'm' instead of 'message'
+    content_lower = m.content.lower()  # Correct usage of 'm'
 
     # AI Chat Command
     if content_lower.startswith("$ask"):
@@ -25,7 +25,7 @@ async def message_function(m, call_together_ai):
         await m.channel.send("Thinking... 🤖")
         return call_together_ai(prompt)
 
-    # Basic Auto-Responses
+    # Basic Auto-Responses (Ensure 'm' is used)
     responses = {
         "j'ai faim": f"T'as perdu : {name(m.author)}",
         "bonjour": f"Bonjour {name(m.author)}",
