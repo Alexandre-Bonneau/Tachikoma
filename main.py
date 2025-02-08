@@ -42,7 +42,8 @@ async def on_message(message):
     if message.author == client.user:
         return
     tab = await message_function(message,call_together_ai)
-
+    if tab:
+            await message.channel.send(tab)
 
 
 
