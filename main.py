@@ -57,13 +57,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     tab = await message_function(message,call_together_ai)
-    print('rrr')
-    print(tab)
+    
     if tab:
-        print("here")
-        print(dir(tab))
         
-        await message.channel.send("rrr")
         await message.channel.send(tab)
         
 
