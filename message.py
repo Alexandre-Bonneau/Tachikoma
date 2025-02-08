@@ -31,6 +31,15 @@ def query(author):
     return
 
 async def message_function(m):
+    if message.content.startswith("$ask"):
+        prompt = message.content[len("$ask "):]
+        if not prompt:
+            await message.channel.send("Please provide a question.")
+            return
+
+        await message.channel.send("Thinking... 🤖")
+        response = call_together_ai(prompt)
+        await message.channel.send(response)
 
     if (m.author == 880383298512228373):
         return
