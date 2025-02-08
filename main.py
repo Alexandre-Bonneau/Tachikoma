@@ -4,7 +4,10 @@ import random
 from bot_token import TOKEN
 from message import *
 from together import Together
-client_ai = Together()
+
+TOGETHER_AI_KEY = "b1a36c050a36d93019cf8e7f4d21444f04934ba2a5be591b1aea734c13f2c2bf"
+
+client_ai = Together(api_key=TOGETHER_AI_KEY)
 intents = discord.Intents.default()  # Allow the use of custom intents
 intents.members = True
 
