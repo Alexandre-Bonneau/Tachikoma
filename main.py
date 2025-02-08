@@ -20,7 +20,7 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=activity_)
 
 def call_together_ai(prompt):
-    print(prompt)
+    """ Calls TogetherAI and returns a valid response or error message """
     response = client_ai.chat.completions.create(
         model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
         messages=[{"role": "user", "content": prompt}],
@@ -30,12 +30,23 @@ def call_together_ai(prompt):
         top_k=50,
         repetition_penalty=1,
         stop=["<|end_of_sentence|>"],
-        stream=False  # Set to False for single response
+        stream=False
     )
-    rett=response.choices[0].message.content
-    print(rett)
-    
-    return rett
+
+    # Debugging: Print full response for inspection
+    print("Raw API Response:", response)
+
+    # Ensure response has the correct structure
+    if "choices" in response and len(response["choices"]) > 0:
+        message_content = response["choices"][0].get("message", {}).get("content", "").strip()
+
+        if message_content:
+            return message_content  # Return actual AI response
+        else:
+            return "🤖 I couldn't generate a response. Try again!"
+    else:
+        return "❌ Error: Unexpected API response format."
+
 
 @client.event
 async def on_message(message):
