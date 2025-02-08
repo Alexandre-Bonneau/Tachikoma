@@ -1,39 +1,20 @@
-
-#anti spam/cooldown
 import discord
 import random
-from jdr import *
-import os
-#from attest import *
-#import playlists as p
-random.seed()
-jDR_Data = data_stat()
-#attest_class = attest()
-def nosharp(str1):
-    return str1.split("#")[0]
 
+# Utility functions
 def name(author):
+    """ Returns the best possible display name for a user. """
+    return author.nick if isinstance(author, discord.Member) and author.nick else str(author).split("#")[0]
 
-    if(type(author) is discord.member.Member and author.nick != None):
-        return author.nick
-    return nosharp(str(author))
+def has_permission(member, permission):
+    """ Checks if a user has a specific permission. """
+    return any(getattr(role.permissions, permission, False) for role in member.roles)
 
-def has_permission(member,permission):
-
-    for role in member.roles:
-        print(role.permissions.__getattribute__(permission))
-        if role.permissions.__getattribute__(permission):
-            return True
-    return False
-
-
-def query(author):
-    return
-
+# Main message handler function
 async def message_function(m, call_together_ai):
     """ Handles messages, including AI and custom commands. """
 
-    content_lower = m.content.lower()
+    content_lower = m.content.lower()  # Use 'm' instead of 'message'
 
     # AI Chat Command
     if content_lower.startswith("$ask"):
