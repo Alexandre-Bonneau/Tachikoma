@@ -8,22 +8,26 @@ from together import Together
 TOGETHER_AI_KEY = "b1a36c050a36d93019cf8e7f4d21444f04934ba2a5be591b1aea734c13f2c2bf"
 
 client_ai = Together(api_key=TOGETHER_AI_KEY)
-intents = discord.Intents.default()  # Allow the use of custom intents
+intents = discord.Intents.default()
+intents.message_content = True  # Nécessaire pour lire le contenu des messages
 intents.members = True
 
 client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
-    activity_ = discord.Activity(type = discord.ActivityType.playing, name="Trying its best")
-    await client.change_presence(status=discord.Status.online, activity=activity_)
+    print(f'We have logged in as {client.user}')
+    activity = discord.Activity(type=discord.ActivityType.playing, name="Trying its best")
+    await client.change_presence(status=discord.Status.online, activity=activity)
+
 def call_together_ai(prompt):
-    """ Calls TogetherAI and returns a valid response or error message """
+    """Calls TogetherAI and returns a valid response or error message."""
     response = client_ai.chat.completions.create(
-        model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",  # Now using Mistral
-        {"role": "system", "content": "You are an advanced AI Discord Bot Called Tachikoma. Answer concisely and accurately."}
-        messages=[{"role": "user", "content": prompt}],
+        model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
+        messages=[
+            {"role": "system", "content": "You are an advanced AI Discord Bot called Tachikoma. Answer concisely and accurately."},
+            {"role": "user", "content": prompt}
+        ],
         max_tokens=100,
         temperature=0.5,
         top_p=0.9,
@@ -31,42 +35,21 @@ def call_together_ai(prompt):
         stream=False
     )
 
-    response_dict = response.model_dump()  # Convert response to dictionary
+    response_dict = response.model_dump()
 
-    # Extract AI response
     if "choices" in response_dict and len(response_dict["choices"]) > 0:
         return response_dict["choices"][0]["message"]["content"].strip()
     else:
         return "🤖 AI did not return a valid response."
 
-
-
-    # Ensure response has the correct structure
-    if "choices" in response and len(response["choices"]) > 0:
-        message_content = response["choices"][0].get("message", {}).get("content", "").strip()
-
-        if message_content:
-            return message_content  # Return actual AI response
-        else:
-            return "🤖 I couldn't generate a response. Try again!"
-    else:
-        return "❌ Error: Unexpected API response format."
-
-
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
-    tab = await message_function(message,call_together_ai)
     
-    if tab:
-        
-        await message.channel.send(tab)
-        
-
-
+    reply = await message_function(message, call_together_ai)
+    
+    if reply:
+        await message.channel.send(reply)
 
 client.run(TOKEN)
-# cd /d D:
-# cd Programmation/Discordbot/Tachikoma
-# python test2.py
