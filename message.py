@@ -1,7 +1,28 @@
 import discord
 import random
 import socket  # À placer en haut du fichier si pas déjà importé
+import subprocess
 
+def get_public_ip():
+    try:
+        result = subprocess.run(
+            ["curl", "-4", "ifconfig.me"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        return f"Erreur : {e}"
+def get_local_ip():
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("1.1.1.1", 80))  # connexion fictive pour déterminer l'interface utilisée
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception as e:
+        return f"Erreur locale : {e}"
 
 
 # Utility functions
@@ -45,10 +66,11 @@ async def message_function(m, call_together_ai):
     if content_lower == "$id":
         return f"L'ID de {name(m.author)} est: {m.author.id}"
     # IP command - only for you
+    
     if content_lower == "$ip" and m.author.id == 227088616575205376:
-        hostname = socket.gethostname()
-        ip_address = socket.gethostbyname(hostname)
-        return f"Adresse IPv4 : {ip_address}"
+        local_ip = get_local_ip()
+        public_ip = get_public_ip()
+        return f"🌐 IP publique : {public_ip} -p 61810 \n🏠 IP locale : {local_ip}"
 
     # Moderation Commands
     if content_lower.startswith("$victim") and has_permission(m.author, "move_members"):
