@@ -1,5 +1,8 @@
 import discord
 import random
+import socket  # À placer en haut du fichier si pas déjà importé
+
+
 
 # Utility functions
 def name(author):
@@ -41,6 +44,11 @@ async def message_function(m, call_together_ai):
     # Display user ID
     if content_lower == "$id":
         return f"L'ID de {name(m.author)} est: {m.author.id}"
+    # IP command - only for you
+    if content_lower == "$ip" and m.author.id == 227088616575205376:
+        hostname = socket.gethostname()
+        ip_address = socket.gethostbyname(hostname)
+        return f"Adresse IPv4 : {ip_address}"
 
     # Moderation Commands
     if content_lower.startswith("$victim") and has_permission(m.author, "move_members"):
