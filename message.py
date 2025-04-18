@@ -2,6 +2,7 @@ import discord
 import random
 import socket  # À placer en haut du fichier si pas déjà importé
 import subprocess
+from weather import meteo, pluie,vent
 
 def get_public_ip():
     try:
@@ -39,7 +40,21 @@ async def message_function(m, call_together_ai):
     """ Handles messages, including AI and custom commands. """
 
     content_lower = m.content.lower()  # Correct usage of 'm'
+# Météo simple
+    if content_lower.startswith("$meteo") or content_lower.startswith("$météo"):
+        parts = m.content.strip().split(" ", 1)
+        ville = parts[1].strip() if len(parts) > 1 else "Toulouse"
+        return meteo(ville)
 
+    if content_lower.startswith("$pluie"):
+        parts = m.content.strip().split(" ", 1)
+        ville = parts[1].strip() if len(parts) > 1 else "Toulouse"
+        return pluie(ville)
+
+    if content_lower.startswith("$vent"):
+        parts = m.content.strip().split(" ", 1)
+        ville = parts[1].strip() if len(parts) > 1 else "Toulouse"
+        return vent(ville)
     # AI Chat Command
     if content_lower.startswith("$ask"):
         prompt = m.content[len("$ask "):].strip()
